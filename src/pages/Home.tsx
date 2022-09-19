@@ -9,7 +9,7 @@ import { IFilmes } from '../interfaces/IFilmes';
 
 export function Home() {
     const [filmes, setFilmes] = useState<IFilmes[]>([])
-    const [loading,SetLoading] = useState(true);
+    const [loading, SetLoading] = useState(true);
     useEffect(() => {
         async function loadFilmes() {
             const response = await api.get("movie/now_playing", {
@@ -19,30 +19,30 @@ export function Home() {
                     page: 1,
                 }
             })
-           console.log(response.data.results.slice(0,10))
-          setFilmes(response.data.results.slice(0,10))
-          SetLoading(false);
+
+            setFilmes(response.data.results.slice(0, 10))
+            SetLoading(false);
         }
         loadFilmes();
     }, [])
-    if(loading){
-        return(
-            <div className ='loading' > 
-        <h2>Carregando filmes....</h2>
+    if (loading) {
+        return (
+            <div className='loading' >
+                <h2>Carregando filmes....</h2>
             </div>
         )
     }
     return (
         <div className="container">
             <div className="lista-filmes">
-                {filmes.map((filmes)=>{
-                        return(
-                            <article key={filmes.id}>
-                                <strong>{filmes.title}</strong>
-                                <img src={`https:image.tmdb.org/t/p/original/${filmes.poster_path}`} alt = {filmes.title}/>
-                                <Link to={`/filme/${filmes.id}`}>Acessar</Link>
-                            </article>
-                        )
+                {filmes.map((filmes) => {
+                    return (
+                        <article key={filmes.id}>
+                            <strong>{filmes.title}</strong>
+                            <img src={`https:image.tmdb.org/t/p/original/${filmes.poster_path}`} alt={filmes.title} />
+                            <Link to={`/filme/${filmes.id}`}>Acessar</Link>
+                        </article>
+                    )
                 })}
             </div>
         </div>

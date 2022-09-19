@@ -1,9 +1,15 @@
 import { RoutesApp } from "./RoutesApp"
-import "./styles/App.module.css"
+import "./styles/App.css"
+import { ToastContainer } from "react-toastify"
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <RoutesApp/>
+    <div className="app">
+      <ToastContainer autoClose={3000} />
+      <RoutesApp />
+    </div>
   )
 }
 
