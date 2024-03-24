@@ -39,7 +39,7 @@ export function Home() {
                     return (
                         <article key={filmes.id}>
                             <strong>{filmes.title}</strong>
-                            <img src={`https:image.tmdb.org/t/p/original${filmes.poster_path}`} alt={filmes.title} />
+                            <img src={`http:image.tmdb.org/t/p/original${filmes.poster_path}`} alt={filmes.title} />
                             <Link to={`/filme/${filmes.id}`}>Acessar</Link>
                         </article>
                     )
